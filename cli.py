@@ -46,3 +46,11 @@ def add_animal():
     session.commit()
     print(f"Animal '{name}' added successfully.")
 
+def list_animals():
+    animals = session.query(Animal).all()
+    if not animals:
+        print("No animals found.")
+        return
+    for animal in animals:
+        print(animal)
+
