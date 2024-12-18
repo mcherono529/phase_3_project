@@ -110,3 +110,16 @@ def view_habitat_animals():
     for animal in animals_in_habitat:
         print(animal)
 
+def main_menu():
+    while True:
+        print("\nAnimal Zoo Management CLI App")
+        print("1. Add Habitat")
+        print("2. List Habitats")
+        print("3. Add Animal")
+        print("4. List Animals")
+        print("5. Update Animal")
+        print("6. Remove Animal")
+        print("7. View Animals in a Habitat")
+        print("8. Exit")
+
+       
