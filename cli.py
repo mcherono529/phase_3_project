@@ -91,3 +91,22 @@ def remove_animal():
     session.commit()
     print(f"Animal '{animal.name}' removed successfully.")
 
+def view_habitat_animals():
+    list_habitats()
+    habitat_id = int(input("Enter the ID of the habitat to view its animals: "))
+    habitat = session.get(Habitat, habitat_id)
+
+    if not habitat:
+        print("Habitat not found. Please try again.")
+        return
+
+    animals_in_habitat = habitat.animals
+
+    if not animals_in_habitat:
+        print(f"No animals found in habitat '{habitat.name}'.")
+        return
+
+    print(f"Animals in habitat '{habitat.name}':")
+    for animal in animals_in_habitat:
+        print(animal)
+
