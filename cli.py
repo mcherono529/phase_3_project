@@ -122,4 +122,27 @@ def main_menu():
         print("7. View Animals in a Habitat")
         print("8. Exit")
 
-       
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            add_habitat()
+        elif choice == "2":
+            list_habitats()
+        elif choice == "3":
+            add_animal()
+        elif choice == "4":
+            list_animals()
+        elif choice == "5":
+            update_animal()
+        elif choice == "6":
+            remove_animal()
+        elif choice == "7":
+            view_habitat_animals()
+        elif choice == "8":
+            print("Goodbye!")
+            sys.exit()
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    init_db()
+    main_menu()
