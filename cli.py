@@ -29,3 +29,20 @@ def list_habitats():
     for habitat in habitats:
         print(habitat)
 
+def add_animal():
+    name = input("Enter animal name: ")
+    species = input("Enter species: ")
+    age = int(input("Enter age: "))
+    list_habitats()
+    habitat_id = int(input("Enter the ID of the habitat to assign this animal: "))
+
+    habitat = session.get(Habitat, habitat_id)
+    if not habitat:
+        print("Invalid habitat ID. Please try again.")
+        return
+
+    animal = Animal(name=name, species=species, age=age, habitat_id=habitat_id)
+    session.add(animal)
+    session.commit()
+    print(f"Animal '{name}' added successfully.")
+
