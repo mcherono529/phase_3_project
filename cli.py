@@ -54,3 +54,27 @@ def list_animals():
     for animal in animals:
         print(animal)
 
+def update_animal():
+    list_animals()
+    animal_id = int(input("Enter the ID of the animal to update: "))
+    animal = session.get(Animal, animal_id)
+
+    if not animal:
+        print("Animal not found. Please try again.")
+        return
+
+    animal.name = input(f"Enter new name (current: {animal.name}): ") or animal.name
+    animal.species = input(f"Enter new species (current: {animal.species}): ") or animal.species
+    animal.age = int(input(f"Enter new age (current: {animal.age}): ") or animal.age)
+    list_habitats()
+    new_habitat_id = input(f"Enter new habitat ID (current: {animal.habitat_id}): ") or animal.habitat_id
+
+    new_habitat = session.get(Habitat, int(new_habitat_id)) if new_habitat_id else None
+    if new_habitat_id and not new_habitat:
+        print("Invalid habitat ID. Update canceled.")
+        return
+
+    animal.habitat_id = new_habitat_id
+    session.commit()
+    print(f"Animal '{animal.name}' updated successfully.")
+
