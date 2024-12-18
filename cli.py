@@ -78,3 +78,16 @@ def update_animal():
     session.commit()
     print(f"Animal '{animal.name}' updated successfully.")
 
+def remove_animal():
+    list_animals()
+    animal_id = int(input("Enter the ID of the animal to remove: "))
+    animal = session.get(Animal, animal_id)
+ 
+    if not animal:
+        print("Animal not found. Please try again.")
+        return
+
+    session.delete(animal)
+    session.commit()
+    print(f"Animal '{animal.name}' removed successfully.")
+
