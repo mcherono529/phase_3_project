@@ -21,3 +21,11 @@ def add_habitat():
     session.commit()
     print(f"Habitat '{name}' added successfully.")
 
+def list_habitats():
+    habitats = session.query(Habitat).all()
+    if not habitats:
+        print("No habitats found.")
+        return
+    for habitat in habitats:
+        print(habitat)
+
