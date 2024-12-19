@@ -8,14 +8,13 @@ engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# CLI functionality
 def init_db():
     Base.metadata.create_all(engine)
     print("Database Initialized")
 
 def add_habitat():
     name = input("Enter habitat name: ")
-    type_ = input("Enter habitat type (e.g., Savannah, Aquarium): ")
+    type_ = input("Enter habitat type: ")
     habitat = Habitat(name=name, type=type_)
     session.add(habitat)
     session.commit()
@@ -143,6 +142,4 @@ def main_menu():
         else:
             print("Invalid choice. Please try again.")
 
-if __name__ == "__main__":
-    init_db()
-    main_menu()
+
