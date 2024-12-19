@@ -142,4 +142,6 @@ def main_menu():
         else:
             print("Invalid choice. Please try again.")
 
-
+if __name__ == "__main__":
+    init_db()
+    main_menu()
