@@ -4,3 +4,15 @@ import sys
 
 Base = declarative_base()
 
+class Habitat(Base):
+    __tablename__ = "habitats"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    type = Column(String, nullable=False)
+
+    animals = relationship("Animal", back_populates="habitat")
+
+    def __repr__(self):
+        return f"Habitat(id={self.id}, name='{self.name}', type='{self.type}')"
+
+
